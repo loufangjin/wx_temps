@@ -23,26 +23,26 @@
       {
         "pagePath":"pages/index/index",
         "text":"首页",
-        "iconPath":"images/1.png",
-        "selectedIconPath":"images/2.png"
+        "iconPath":"/images/1.png",
+        "selectedIconPath":"/images/2.png"
       },
       {
         "pagePath":"pages/scroll/scroll",
         "text":"滚动",
-        "iconPath":"images/1.png",
-        "selectedIconPath":"images/2.png"
+        "iconPath":"/images/1.png",
+        "selectedIconPath":"/images/2.png"
       },
       {
         "pagePath":"pages/logs/logs",
         "text":"跳转",
-        "iconPath":"images/1.png",
-        "selectedIconPath":"images/2.png"
+        "iconPath":"/images/1.png",
+        "selectedIconPath":"/images/2.png"
       },
       {
         "pagePath":"pages/maps/maps",
         "text":"地图",
-        "iconPath":"images/1.png",
-        "selectedIconPath":"images/2.png"
+        "iconPath":"/images/1.png",
+        "selectedIconPath":"/images/2.png"
       }
     ]
   }
