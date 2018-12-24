@@ -1,0 +1,8 @@
+<!--pages/template/template.wxml-->
+<template name="search">
+	<view>
+		{{item}}
+	</view>
+	<image  class="scroll-test-img" src="{{url}}" mode="scaleToFill"></image>
+</template>
+

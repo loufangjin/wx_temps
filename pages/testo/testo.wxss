@@ -1,0 +1,7 @@
+.pullRefreh {
+	width: 750rpx;
+	height: 100rpx;
+	font-size: 20px;
+	line-height: 100rpx;
+	border: 1px solid #ccc;
+}

@@ -1,0 +1,18 @@
+<view class="container">
+	<view class="header">
+		<view class="header_name">
+			{{detailsObj.name}}
+		</view>
+		<view class="header_img">
+			<image wx:if="{{isData}}" bind:tap="setRecive" class="header_img_status" src="/images/yes.png" mode="scaleToFill"></image>
+			<image wx:else class="header_img_status" bind:tap="setRecive" src="/images/no.png" mode="scaleToFill"></image>
+			<image class="header_img_status" bind:tap="shareCollect" src="/images/icon_nav_nav.png" mode="scaleToFill"></image>
+		</view>
+	</view>
+	<view class="content">
+		<image class="content_img" src="{{detailsObj.url}}" mode="scaleToFill"></image>
+	</view>	
+	<view class="footer">
+		{{detailsObj.imgDescription}}
+	</view>
+</view>

@@ -1,0 +1,49 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/scroll/scroll",
+    "pages/logs/logs",
+    "pages/testo/testo",
+    "pages/maps/maps",
+    "pages/template/template",
+    "pages/details/details"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "LFJ",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar":{
+    "position":"bottom",
+    "color":"red",
+    "selectedColor":"green",
+    "backgroundColor":"pink",
+    "list":[
+      {
+        "pagePath":"pages/index/index",
+        "text":"首页",
+        "iconPath":"images/1.png",
+        "selectedIconPath":"images/2.png"
+      },
+      {
+        "pagePath":"pages/scroll/scroll",
+        "text":"滚动",
+        "iconPath":"images/1.png",
+        "selectedIconPath":"images/2.png"
+      },
+      {
+        "pagePath":"pages/testo/testo",
+        "text":"组件",
+        "iconPath":"images/1.png",
+        "selectedIconPath":"images/2.png"
+      },
+      {
+        "pagePath":"pages/maps/maps",
+        "text":"地图",
+        "iconPath":"images/1.png",
+        "selectedIconPath":"images/2.png"
+      }
+    ]
+  }
+}

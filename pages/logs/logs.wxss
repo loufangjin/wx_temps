@@ -1,0 +1,27 @@
+.log-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+}
+.log-item {
+  margin: 10rpx;
+}
+page{
+	background: skyblue;
+}
+.fecg__btn{
+	width: 100px;
+	height: 50px;
+	border: 1rpx solid red;
+	/*display: flex;*/
+	text-align: center;
+}
+.fech__btn_status{
+	line-height: 50px;
+	/*margin: auto;*/
+}
+.swip__size_status {
+	width: 375rpx;
+	height: 100%;
+}

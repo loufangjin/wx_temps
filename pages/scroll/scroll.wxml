@@ -1,0 +1,89 @@
+<!--pages/scroll/scroll.wxml-->
+<!-- 绝对路径 -->
+<!-- <import src="/pages/template/template" /> -->
+<!-- 相对路径 -->
+<import src="../template/template" />
+<view>
+	<text wx:if="{{isTrue}}">正在加载中...</text>
+</view>
+<scroll-view scroll-x class="scroll-header"  scroll-with-animation='true' bindscrolltoupper="refreshX" bindscrolltolower="loadMoreX">
+	<view>内容1</view>
+	<view>内容2</view>
+	<view>内容3</view>
+	<view>内容4</view>
+	<view>内容5</view>
+	<view>内容6</view>
+	<view>内容7</view>
+	<view>内容8</view>
+</scroll-view>
+
+<!-- <view class="header" hidden="{{hideHeader}}">
+	<view>下拉刷新中...</view>
+	<view>{{refreshTime}}</view>
+</view> -->
+<scroll-view scroll-y="true" style="height: 800rpx" scroll-top='{{topNum}}'  bindscrolltoupper="refreshY" bindscrolltolower="loadMoreY">
+   <view class="scroll-test" wx:for="{{imgsList}}" wx:for-item="item" wx:for-index="index">
+   	<view catch:tap="scrollImg" data-prop-id="{{item.id}}">
+   		<template is="search" data="{{...item}}" />
+   		<!-- <template is="search" data="{{...item}}"/>  ...item使用的时候是将整个对象平铺，这样templatel里面直接那对象里面的变量名，-->
+   	</view>
+   </view>
+   <view bind:tap="goTop">
+   	回到顶部
+   </view>
+</scroll-view>
+<view>内容5</view>
+<view>内容6</view>
+<view>内容7</view>
+<view>内容8</view><view>内容5</view>
+	<view>内容6</view>
+	<view>内容7</view>
+	<view>内容8</view><view>内容5</view>
+	<view>内容6</view>
+	<view>内容7</view>
+	<view>内容8</view><view>内容5</view>
+	<view>内容6</view>
+	<view>内容7</view>
+	<view>内容8</view><view>内容5</view>
+	<view>内容6</view>
+	<view>内容7</view>
+	<view>内容8</view><view>内容5</view>
+	<view>内容6</view>
+	<view>内容7</view>
+	<view>内容8</view><view>内容5</view>
+	<view>内容6</view>
+	<view>内容7</view>
+	<view>内容8</view><view>内容5</view>
+	<view>内容6</view>
+	<view>内容7</view>
+	<view>内容8</view>
+<view bind:tap="goOutTop">
+	外层回到顶部
+</view>
+
+<!-- <view class="bottom" hidden="{{hideBottom}}">
+	<view>{{loadMore}}</view>
+	<view>{{refreshTime}}</view>
+</view> -->
+<!-- <view class="box_wrap">
+	<view class="box_one box_common">1</view>
+	<view class="box_two box_common">2</view>
+	<view class="box_three box_common">3</view>
+</view> -->
+<!-- <view class="box_wrap">
+	<view class="box_one">
+		<view class="box_common">1</view>
+		<view class="box_common">1</view>
+	</view>
+	<view class="box_two box_common">2</view>
+	<view class="box_three">
+		<view class="box_common">3</view>
+		<view class="box_common">3</view>
+	</view>
+</view> -->
+<!-- "验证捕获和冒泡" -->
+<!-- <view class="box_column" capture-bind:tap="handleFather" bind:tap="handleFatherMao">
+	<view class="box_common box_four" capture-catch:tap="handleChild" bind:tap="handleChildMao">4CC</view>
+	<view class="box_common box_five">5</view>
+	<view class="box_common box_six">6</view>
+</view> -->

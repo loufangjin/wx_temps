@@ -1,0 +1,105 @@
+javascript 知识库 https://zh.javascript.info/
+3-9
+image 引入图片，根路径引入“/images/xxx/xxx”
+rpx ,
+page{}最外层height:100%,实现整个页面的全部背景
+style:动样式，class:静态样式
+flex:aligns-items:center,让一个包裹里面的元素全部水平垂直居中
+非flex:给包裹text-align:center使子水平居中，在子元素line-height，vertical-align:middle。垂直居中
+text标签特效：“\n”表示换行，嵌套text使用设置不同样式
+一般i6的物理分辨率来做设计图开发750px*1334px:  1rpx = 1px = 0.5pt (2px代表1pt在i6下)
+小程序：使用的是逻辑分辨率：为了适配最好选择i6进行适配750rpx,其他的设备小程序会自己进行换算
+pt:逻辑分辨率（长度单位，大小和屏幕有关）
+px:物理分辨率（无数个点的集合，没有长度的概念）点的集合也就是物理分辨率越高看的越清晰
+不同设备下pt和px关系不一样，只有i6下才是1rpx = 1px = 0.5pt，其他可能是1pt=2px 或者多个px
+不是所有都用rpx视情况来定；字体之类的可以不用；
+使用UI框架库：在app.wxss中使用：@import 'weui.wxss';
+案例：1\让图片完整的显示在不同设备里,2/less布局3/使用weui框架库
+4.9
+数据绑定：
+this.setData(）设置值的改变只能这样
+this.data.xxx = xxx 也可以数据绑定，但是这里有很多局限性，最好都用this.setData(）
+this.data.objectArray 可以直接获取值
+
+循环：
+wx:for="{{array}}" wx:for-index="idx" wx:for-item="itemName"  wx:key="unique"
+wx:for 的值为字符串时：会将字符串解析成字符串数组
+<view wx:for="array">
+  {{item}}
+</view>
+花括号和引号之间如果有空格，将最终被解析成为字符串
+<view wx:for="{{[1,2,3]}} ">
+  {{item}}
+</view>
+
+跳转：
+navigateTo:/redirectTo导航区别
+navigateTo:/redirectTo 使用注意事项接一个对象wx.navigateTo{url:''}这里面的路径指向要跳转的页面，不要加页面的后缀名
+onUnload:在这里执行redirectTo，目的是让小程序关闭
+onHide：在这里执行navigateTo,目的是让小程序跳转之后，页面隐藏
+
+冒泡事件/阻止冒泡事件/捕获事件/阻止捕获事件:关键字bind:/catch:/capture-bind:/capture-catch
+注意：捕获发生在冒泡之前，
+点击父亲：是否存在捕获或者冒泡都只是执行父亲的事件，
+点击孩子：是否存在捕获或者冒泡，都是先执行捕获在执行冒泡，捕获是父亲开始，冒泡是孩子开始执行
+bindtap：冒泡/catchtap：阻止冒泡
+捕获关键字：capture-bind、capture-catch比如bind:touchstart：冒泡、capture-bind:touchstart：捕获、capture-catch:touchstart：阻止捕获
+
+template 模板化 而非模块化 （只能公用wxml/wxss）
+使用方式：需要引入的页面、样式; 
+不需要加后缀名
+传参数 data='{{...item}}'  
+传唯一属性：子定义属性   data-prop-id = ''
+<import src="/pages/template/template" />
+<import src="../template/template" />
+wxml:<import src='' /  > 可以相对和绝对路径  <template name = ' ' data={{}}>
+wxss:@import ''
+<view bind:tap="scrollImg" data-prop-id="{{item.id}}">  //自定义属性拿到每一个对象里面的id值：注意属性名要一至
+		<template is="search" data="{{...item}}" />
+		<!-- <template is="search" data="{{...item}}"/>  ...item使用的时候是将整个对象平铺，这样templatel里面直接那对象里面的变量名，-->
+	</view>
+注意：...item使用的时候是将整个对象平铺，这样templatel里面直接那对象里面的变量名，而不是随意的取一个变量名
+ js本地文件的引入:
+注意创建的文件要在pages之外，否则引入不成功
+抛出文件内容：module.exports = {}
+引入文件：require()只支持相对路径
+module.exports = {
+    imgList:imgList
+  }
+需要加后缀名
+var imgList = require("../../data/data.js")
+6.4.6填充详情页
+详情页面跳转：
+注意写法
+wx.navigateTo({
+      url:"/pages/details/details?id=" +uniqueId
+    })
+
+缓存：缓存规定不能>10m
+ wx.setStorage("key",object/string) 
+wx.getStorage("key")
+wx.removeStorage("key")
+ wx.clearStorage()  清除所有缓存
+收藏操作：未收藏和已收藏操作来回切换，以及wx.showModal下的确定和取消，以及分享时候的清除收藏操作和分享
+https://www.jb51.net/article/145032.htm 获取缓存
+
+横向滚动刷新和纵向滚动刷新
+置顶操作：两种方式
+scroll-view组件内置方法
+<scroll-view scroll-y="true" style="height: 800rpx" scroll-top='{{topNum}}'  bindscrolltoupper="refreshY" bindscrolltolower="loadMoreY"></scroll-view>
+ goTop(e){
+    this.setData({
+      topNum:this.data.topNum = 0
+  })
+常规方法
+<view bind:tap="goOutTop">
+	外层回到顶部
+</view>
+ goOutTop(){ 
+    wx.pageScrollTo({ //微信api提供的方法
+      scrollTop: 0,
+      duration: 300
+    })
+  },
+下拉加载https://www.jianshu.com/p/b9c2c261d86c
+根据接口控制页码数量、
