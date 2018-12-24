@@ -32,19 +32,20 @@ Page({
         duration: e.detail.value
       })
     },
+    /*wx.navigateTo/wx.redirectTo只能用在非tabBar页面的跳转，要跳转到tabBar页面，需要使用wx.switchTab*/
   bindViewsTap: function() {
-    wx.navigateTo({//保留当前页面，跳转
-      url: '../pages/maps/maps'
-    })
-    /*wx.redirectTo({//关闭当前页面，跳转
-
-    }),
-    wx.navigateBack({//关闭当前页，返回上一页
-
-    }),
-    wx.switchTab({//跳转tabBar页面
-
+   /* wx.navigateTo({//保留当前页面，跳转
+      url: "/pages/details/details"
     })*/
+   /* wx.redirectTo({//关闭当前页面，跳转
+
+    }),*/
+    /*wx.navigateBack({//关闭当前页，返回上一页
+
+    }),*/
+    wx.switchTab({//跳转tabBar页面
+      url:"/pages/maps/maps"
+    })
   },
   bindSetData(){
     var perData = this.perData

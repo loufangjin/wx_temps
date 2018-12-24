@@ -33,8 +33,8 @@
         "selectedIconPath":"images/2.png"
       },
       {
-        "pagePath":"pages/testo/testo",
-        "text":"组件",
+        "pagePath":"pages/logs/logs",
+        "text":"跳转",
         "iconPath":"images/1.png",
         "selectedIconPath":"images/2.png"
       },

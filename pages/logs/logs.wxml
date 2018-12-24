@@ -1,7 +1,7 @@
                     <!--logs.wxml-->
 <view class="container log-list">
-	<!-- <button bindtap="bindViewsTap" >点击路由跳转</button>	
-	<navigator class="" url="/pages/maps/maps" open-type="navigate">跳转</navigator> -->
+	<button bindtap="bindViewsTap" >点击路由跳转</button>	
+	<navigator class="" url="/pages/details/details" open-type="navigate">跳转</navigator>
   	<!-- <block wx:for="{{logs}}" wx:for-item="log">
    		 <text class="log-item">{{index + 1}}. {{log}}</text>
   	</block> -->
