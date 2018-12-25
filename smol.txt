@@ -1,6 +1,6 @@
 javascript 知识库 https://zh.javascript.info/
 3-9
-image 引入图片，根路径引入“/images/xxx/xxx”
+image 引入图片，根路径引入“/images/xxx/xxx” 或者“images/xxx/xxx”
 rpx ,
 page{}最外层height:100%,实现整个页面的全部背景
 style:动样式，class:静态样式
