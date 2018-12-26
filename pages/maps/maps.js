@@ -1,3 +1,4 @@
+const myaudio = wx.createInnerAudioContext(); 
 Page({
 	/**
 	 * 页面的初始数据
@@ -9,8 +10,84 @@ Page({
 	  	accuracy: 16,//位置精准度 
 	  	markers: [], //标记点
 	  	covers: [], //覆盖物
+	  	audioArr: [
+	  	  {
+	  	    id: '000',
+	  	    src: 'http://mp3.djwma.com/mp3/爆袭全站欢快节奏感觉那是杠杠滴.mp3',
+	  	    time: '30s',
+	  	    bl: false
+	  	  },
+	  	  {
+	  	    id: '001',
+	  	    src: 'http://mp3.djwma.com/mp3/好听的欧美男声 网络流行.mp3',
+	  	    time: '50s',
+	  	    bl: false
+	  	  },
+	  	]
+	},
+	//音频播放  
+	audioPlay: function (e) {
+	  var that = this,
+	    id = e.currentTarget.dataset.id,
+	    key = e.currentTarget.dataset.key,
+	    audioArr = that.data.audioArr,
+	    vidSrc = audioArr[key].src;
+	 	myaudio.src = vidSrc;
+	  	myaudio.autoplay = true;
+
+	  //切换显示状态:初始让所有状态值变成false
+		for (var i = 0; i < audioArr.length; i++) {
+		   audioArr[i].bl = false;
+		}
+	 //点击的时候让当前这个变成true
+	  audioArr[key].bl = true;
+
+	  //开始监听
+	  myaudio.onPlay(() => {
+	    that.setData({
+	      audioArr: audioArr
+	    })
+	  })
+
+	  //结束监听
+	  myaudio.onEnded(() => {
+	    audioArr[key].bl = false;
+	    that.setData({
+	      audioArr: audioArr,
+	    })
+	  })
+
 	},
 
+	// 音频停止
+	audioStop: function (e) {
+	  var that = this,
+	    key = e.currentTarget.dataset.key,
+	    audioArr = that.data.audioArr;
+	  //切换显示状态
+	  for (var i = 0; i < audioArr.length; i++) {
+	    audioArr[i].bl = false;
+	  }
+	  audioArr[key].bl = false;
+
+	  myaudio.stop();
+	  //停止监听
+	  myaudio.onStop(() => {
+	    audioArr[key].bl = false;
+	    that.setData({
+	      audioArr: audioArr,
+	    })
+	    console.log(1)
+	  })
+	  //结束监听
+	  myaudio.onEnded(() => {
+	    audioArr[key].bl = false;
+	    that.setData({
+	      audioArr: audioArr,
+	    })
+	    console.log(2)
+	  })
+	}, 
 	/**
 	 * 生命周期函数--监听页面加载,初始化；发请求
 	 */

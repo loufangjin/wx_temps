@@ -53,8 +53,8 @@ template 模板化 而非模块化 （只能公用wxml/wxss）
 传唯一属性：子定义属性   data-prop-id = ''
 <import src="/pages/template/template" />
 <import src="../template/template" />
-wxml:<import src='' /  > 可以相对和绝对路径  <template name = ' ' data={{}}>
-wxss:@import ''
+wxml:<import src="../template/template" /> 可以相对和绝对路径  <template name = ' ' data={{}}>
+wxss:@import 'weui.wxss';
 <view bind:tap="scrollImg" data-prop-id="{{item.id}}">  //自定义属性拿到每一个对象里面的id值：注意属性名要一至
 		<template is="search" data="{{...item}}" />
 		<!-- <template is="search" data="{{...item}}"/>  ...item使用的时候是将整个对象平铺，这样templatel里面直接那对象里面的变量名，-->
@@ -83,6 +83,7 @@ wx.removeStorage("key")
  wx.clearStorage()  清除所有缓存
 收藏操作：未收藏和已收藏操作来回切换，以及wx.showModal下的确定和取消，以及分享时候的清除收藏操作和分享
 https://www.jb51.net/article/145032.htm 获取缓存
+ wx.showToast/ wx.showActionSheet/wx.showModal
 
 横向滚动刷新和纵向滚动刷新
 置顶操作：两种方式
@@ -104,3 +105,7 @@ scroll-view组件内置方法
   },
 下拉加载https://www.jianshu.com/p/b9c2c261d86c
 根据接口控制页码数量、
+view属性： <view class="flex-item bc_green" hover-class="bc_red" hover-start-time="2000" hover-stay-time="2000">1</view> //点击效果、点击后多级出现效果、离开后多久消失状态结果
+icon图标：type、size、color
+<button> type、plain:镂空、open-type、disabled:
+跳转：wx.navigateTo\redirectTo:关闭当前页\switchTab：tab页跳转\reLaunch：关闭所有页面，打开新页面\navigateBack：返回
