@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/music/music",
     "pages/index/index",
     "pages/scroll/scroll",
     "pages/logs/logs",
@@ -24,25 +25,25 @@
         "pagePath":"pages/index/index",
         "text":"首页",
         "iconPath":"/images/1.png",
-        "selectedIconPath":"/images/2.png"
+        "selectedIconPath":"/images/icon_nav_feedback.png"
       },
       {
         "pagePath":"pages/scroll/scroll",
         "text":"滚动",
         "iconPath":"/images/1.png",
-        "selectedIconPath":"/images/2.png"
+        "selectedIconPath":"/images/icon_nav_feedback.png"
       },
       {
-        "pagePath":"pages/logs/logs",
-        "text":"跳转",
+        "pagePath":"pages/music/music",
+        "text":"音乐",
         "iconPath":"/images/1.png",
-        "selectedIconPath":"/images/2.png"
+        "selectedIconPath":"/images/icon_nav_feedback.png"
       },
       {
         "pagePath":"pages/maps/maps",
         "text":"地图",
         "iconPath":"/images/1.png",
-        "selectedIconPath":"/images/2.png"
+        "selectedIconPath":"/images/icon_nav_feedback.png"
       }
     ]
   }

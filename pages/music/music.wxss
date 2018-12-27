@@ -1,0 +1,60 @@
+/* pages/music/music.wxss */
+.bgImage {
+  height: 400rpx;
+  width: 400rpx;
+  border-radius: 50%;
+}
+
+.music {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.con {
+  width: 100rpx;
+  height: 100rpx;
+  margin-left: 20rpx;
+}
+
+.playType {
+  border-radius: 0%;
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 80rpx;
+}
+
+.classname1 {
+  height: 400rpx;
+  padding-top: 50rpx;
+  text-align: center;
+}
+
+.classname2 {
+  height: 100rpx;
+}
+.rotate-360{
+  animation: rotate 10s linear infinite;
+  animation-play-state: running;
+  /* 动画正在播放 */
+}
+.rotate-360-paused{
+  animation: rotate 10s linear infinite;
+  animation-play-state: paused;
+  /* 动画正在停止 */
+}
+@keyframes rotate
+{
+  0%   {transform: rotate(0deg);}
+  50% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+.slider-container{
+  bottom: 140rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}

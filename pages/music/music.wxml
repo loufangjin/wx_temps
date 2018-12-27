@@ -1,0 +1,39 @@
+<!--pages/music/music.wxml-->
+<!-- <audio src="{{musicUrl}}" id="myMusic" bindtimeupdate="timeUpdate"></audio> -->
+<view class="music">
+  <image  class="bgImage {{pauseStatus === false ? 'rotate-360' : 'rotate-360-paused'}}" src="{{musicSingle}}"></image>
+</view>
+<view class="classname1">
+  {{musicName}}
+</view>
+<view class="slider-container">	
+	<slider
+	    value="{{sliderValue}}"
+	    min="0"
+	    max="{{duration}}"
+	    bindchange="bindSliderchange"
+	    activeColor="#13beec"
+	    style="width: 80%;margin: 0;"
+	    block-size="12"
+	    block-color="#13beec"
+	 />
+</view>
+<view>currentTime:{{curTime}}</view>
+<view>转换后的当前时间：{{showcurTimeVal}}</view>
+<view>duration:{{duration}}</view>
+<view>转换后的总长度:{{showduration}}</view>
+<view class="classname2"></view>
+<view bind:tap="setStopState">
+	<button>停止按钮</button>
+</view>
+<view class="music">
+  <image class="bgImage playType" src="/images/list.png" bindtap="playType"></image>
+  <image class="bgImage con" src="/images/prev.png" bindtap="last"></image>
+  <image class="bgImage con" src="{{pauseStatus === false ? '/images/pause.png' : '/images/play.png'}}" bindtap="play"></image>
+  <image class="bgImage con" src="/images/next.png" bindtap="next"></image>
+</view>
+<!-- playType 循环播放 -->
+<!-- last 上一首-->
+<!-- play 播放和暂停-->
+<!-- next 下一首-->
+
