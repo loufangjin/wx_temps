@@ -4,7 +4,10 @@
 /*
 var innerAudioContext  = wx.createInnerAudioContext();创建播放器对象
 innerAudioContext.stop() 停止播放
-
+innerAudioContext.seek(curval); //让滑块跳转至指定位置
+innerAudioContext.duration 总长度 //当前音频的长度（单位 s）
+innerAudioContext.currentTime, //播放位置（单位 s）
+innerAudioContext.onTimeUpdate() 监听背景音频播放进度更新事件
 */
 
 var musicLsit = require("../../data/music.js");
