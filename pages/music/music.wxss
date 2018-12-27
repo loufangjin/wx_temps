@@ -25,12 +25,6 @@
   margin-right: 80rpx;
 }
 
-.classname1 {
-  height: 400rpx;
-  padding-top: 50rpx;
-  text-align: center;
-}
-
 .classname2 {
   height: 100rpx;
 }

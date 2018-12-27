@@ -1,6 +1,12 @@
 // pages/music/music.js
 //本地js文件的引入使用require 并且是相对路径
-//https://blog.csdn.net/xxhdcblogzh888/article/details/76595307 详解
+//最好观看小程序论坛 详解
+/*
+var innerAudioContext  = wx.createInnerAudioContext();创建播放器对象
+innerAudioContext.stop() 停止播放
+
+*/
+
 var musicLsit = require("../../data/music.js");
 var innerAudioContext  = wx.createInnerAudioContext();
 Page({
@@ -9,16 +15,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    poster: 'http://pic.pimg.tw/pam86591/1408719752-3322564110_n.jpg',
+    musicSingle: 'http://pic.pimg.tw/pam86591/1408719752-3322564110_n.jpg',
     sliderValue:0,
     duration:0,
     showduration:0,
+    audioIndex:0,
     curTime:0,
     showcurTimeVal:0,
     musicName:"lfj",
     animationData:{},
     pauseStatus:true,
-    musicUrl:"http://static.missevan.com/MP3/201705/08/c8ab947c6a85092e5ffadcf02bbe348b184435.mp3"
+    musicUrl:""
   },
 
   jumpToSongList: function (e) {
@@ -59,16 +66,47 @@ Page({
       //单曲循环、全部播放完之后再一次循环
   },
   last() {
-
+    let length = musicLsit.default.length;
+    let audioIndexPrev = this.data.audioIndex;// 索引值
+    let audioIndexNow = audioIndexPrev;
+    if(audioIndexNow === 0){
+      audioIndexNow = length -1
+    } else {
+      audioIndexNow = audioIndexPrev -1
+    }
+    this.setData({
+      audioIndex:audioIndexNow,
+      musicSingle:musicLsit.default[audioIndexNow].poster
+    })
+     this.play()
+  },
+  next() {
+    let length = musicLsit.default.length;
+    let audioIndexPrev = this.data.audioIndex;// 索引值
+    let audioIndexNow = audioIndexPrev;
+    if(audioIndexPrev === length - 1){
+      audioIndexNow = 0
+    } else {
+      audioIndexNow = audioIndexPrev + 1
+    }
+    this.setData({
+      audioIndex:audioIndexNow,
+      musicSingle:musicLsit.default[audioIndexNow].poster
+    })
+    this.play()
   },
   play() {
     var _this = this
+    _this.setData({
+      musicUrl:musicLsit.default[this.data.audioIndex].src
+    });
     if(_this.data.pauseStatus === true){//pauseStatus === false 播放状态
-        innerAudioContext.src = "http://static.missevan.com/MP3/201705/08/c8ab947c6a85092e5ffadcf02bbe348b184435.mp3";
+      
+        innerAudioContext.src = _this.data.musicUrl;
         innerAudioContext.play(); //注意位置 获取的url要在前
-        innerAudioContext.onPlay(() => {
+        /*innerAudioContext.onPlay(() => {
 
-        })
+        })*/
         _this.commonChange();
         _this.setData({pauseStatus: false})
     }else{
@@ -86,9 +124,6 @@ Page({
    }
    return t;
   }, 
-  next() {
-
-  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -113,9 +148,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    this.setData({
-      musicSingle:"http://static.missevan.com/coversmini/201705/08/c59609b2e5c66fe3f38187807ddcf277184434.jpg"
-    });
+    
     this.commonChange() //每一次改变都要触发这里的事件
   },
 
