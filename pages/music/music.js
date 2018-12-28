@@ -79,7 +79,9 @@ Page({
     }
     this.setData({
       audioIndex:audioIndexNow,
-      musicSingle:musicLsit.default[audioIndexNow].poster
+      musicSingle:musicLsit.default[audioIndexNow].poster,
+      pauseStatus:true,
+      showcurTimeVal:0,
     })
      this.play()
   },
@@ -94,14 +96,16 @@ Page({
     }
     this.setData({
       audioIndex:audioIndexNow,
-      musicSingle:musicLsit.default[audioIndexNow].poster
+      musicSingle:musicLsit.default[audioIndexNow].poster,
+      pauseStatus:true,
+      showcurTimeVal:0,
     })
     this.play()
   },
   play() {
     var _this = this
     _this.setData({
-      musicUrl:musicLsit.default[this.data.audioIndex].src
+      musicUrl:musicLsit.default[_this.data.audioIndex].src
     });
     if(_this.data.pauseStatus === true){//pauseStatus === false 播放状态
       
@@ -151,7 +155,7 @@ Page({
     })
   },
   onLoad: function (options) {
-    
+    console.log(1)
     this.commonChange() //每一次改变都要触发这里的事件
   },
 
