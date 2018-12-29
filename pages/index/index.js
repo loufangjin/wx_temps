@@ -43,7 +43,7 @@ Page({
       })
     }
   },
-  getUserInfo: function(e) {
+  getUserInfo: function(e) { //获取用户信息
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({

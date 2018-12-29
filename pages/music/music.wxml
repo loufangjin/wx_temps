@@ -6,6 +6,9 @@
 <view class="classname1">
   {{musicName}}
 </view>
+<button open-type="share" >分享</button>
+<button bind:tap="scavcode">扫一扫</button>
+<view>{{result}}</view>
 <view class="slider-container">	
 	<slider
 	    value="{{sliderValue}}"

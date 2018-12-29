@@ -9,7 +9,15 @@ innerAudioContext.duration 总长度 //当前音频的长度（单位 s）
 innerAudioContext.currentTime, //播放位置（单位 s）
 innerAudioContext.onTimeUpdate() 监听背景音频播放进度更新事件
 */
+/*
+转发：注意点必须放在onShareAppMessage里面进行 ：<button open-type="share" >分享</button>
+页面内转发：<button> 组件 open-type="share"
+微信小程序右上角转发：onShareAppMessage
 
+*/
+/*
+微信扫一扫： wx.scanCode
+*/
 var musicLsit = require("../../data/music.js");
 var innerAudioContext  = wx.createInnerAudioContext();
 Page({
@@ -28,11 +36,18 @@ Page({
     musicName:"lfj",
     animationData:{},
     pauseStatus:true,
-    musicUrl:""
+    musicUrl:"",
+    result:"",
   },
-
   jumpToSongList: function (e) {
 
+  },
+  scavcode(){
+    wx.scanCode({
+      success:(res)=>{
+        console.log("扫一扫",res.result)
+      }
+    })
   },
   setStopState(){ //停止播放，再次播放的时候重最开始播放
     this.setData({
@@ -155,8 +170,23 @@ Page({
     })
   },
   onLoad: function (options) {
-    console.log(1)
     this.commonChange() //每一次改变都要触发这里的事件
+    /*wx.updateShareMenu({
+      isUpdatableMessage: true,
+      withShareTicket:true, 
+      activityId: "981_bOsfQll1jCfbPfh/tX6PH5Pb-KZEfepsRTQO1HObrjUGOtNKsTdNiDvhPOA8z7Hei_5b0-LT03FlfRKU", // 活动 ID
+        templateInfo: {
+          parameterLis: [{
+              name: 'member_count',
+              value: '1'
+            },
+            {
+              name: 'room_limit',
+              value: '4'
+            }
+          ]
+        }
+    })*/
   },
 
   /**
@@ -204,7 +234,51 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    if(res.from === 'menu'){
+      let path = '/pages/music/music';
+      let urls = '/images/order-details/icon-ddfh.png';
+      let url = 'http://static.missevan.com/coversmini/201705/05/1a448d29ce60f54901a1d6079caa5c4f134006.png';
+      return {
+        title: "当前最新小程序名称", //头部信息
+        desc: '自定义分享描述',
+        imageUrl:url,
+        path: path,   //内容
+       /* success: (res) => {
+          wx.showShareMenue({
+            withShareTicket:true
+          })
+        },*/
+        fail(){
 
+        },
+        complete(){
+
+        }
+      }
+    }
+    if(res.from === 'button'){
+      let path = '/pages/music/music';
+      let urls = '/images/order-details/icon-ddfh.png';
+      let url = 'http://static.missevan.com/coversmini/201611/16/9fa63f486558e760b3b15d338c41ee19224900.png?x-oss-process=image/format,webp';
+      return {
+        title: "当前最新小程序按钮分享名称", //头部信息
+        desc: '自定义分享描述',
+        imageUrl:url,
+        path: path,   //内容
+       /* success: (res) => {
+          wx.showShareMenue({
+            withShareTicket:true
+          })
+        },*/
+        fail(){
+
+        },
+        complete(){
+
+        }
+      }
+    }
+    
   }
 })
